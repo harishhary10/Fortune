@@ -12,46 +12,65 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;800&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/style.css">
   <link rel="stylesheet" href="css/3d-enhancements.css">
+  <link rel="stylesheet" href="css/premium.css">
 </head>
 
-<body>
-  <header class="site-header">
-    <div class="container nav"><a class="brand" href="index.html">FORTUNE<span>OOTY · NILGIRIS</span></a><button class="menu" id="menuBtn">☰</button>
-      <nav class="links"><a href="index.html">Home</a><a href="about.html">About Us</a><a href="accommodation.html">Accommodation</a><a href="packages.html">Packages</a><a href="gallery.html">Gallery</a><a href="contact.html">Contact</a><button class="btn btn-primary" data-book>Book Now</button></nav>
+<body class="premium">
+  <nav class="glass-nav">
+    <a class="brand" href="index.html">FORTUNE<span>OOTY · NILGIRIS</span></a>
+    <button class="gmenu">☰</button>
+    <div class="glinks">
+      <a href="index.html">Home</a>
+      <a href="accommodation.html">Rooms</a>
+      <a href="packages.html">Packages</a>
+      <a href="gallery.html">Gallery</a>
+      <a href="#location">Location</a>
+      <a href="contact.html">Contact</a>
     </div>
-  </header>
+    <button class="gbook" data-book>Book Now</button>
+  </nav>
+
   <main>
-    <section class="hero">
-      <div class="container hero-content"><span class="eyebrow" style="color:#e8ca90">Belmont Terrace · Ooty</span>
-        <h1 class="h1">Your Serene Escape<br>in the Nilgiris</h1>
+    <section class="cine-hero">
+      <div class="layer"></div>
+      <div class="container content">
+        <span class="eyebrow">Belmont Terrace · Ooty</span>
+        <h1>Your Serene Escape<br>in the Nilgiris</h1>
         <p class="lead">Experience the beauty of Ooty with comfortable stays, warm hospitality and unforgettable mountain views.</p>
-        <div class="actions"><button class="btn btn-primary" data-book>Book Your Stay</button><a href="#welcome" class="btn btn-line">Explore Fortune Ooty</a></div>
+        <div class="actions" style="display:flex;gap:12px;margin-top:28px;flex-wrap:wrap">
+          <button class="btn btn-primary" data-book>Check Availability</button>
+          <a href="#welcome" class="btn btn-line">Explore Fortune Ooty</a>
+        </div>
       </div>
+      <div class="scroll-cue">Scroll</div>
     </section>
-    <section class="booking container">
-      <div class="field"><label>Check-in</label><input type="date"></div>
-      <div class="field"><label>Check-out</label><input type="date"></div>
-      <div class="field"><label>Adults</label><select>
-          <option>2 Adults</option>
-        </select></div>
-      <div class="field"><label>Children</label><select>
-          <option>0 Children</option>
-        </select></div>
-      <div class="field"><label>Rooms</label><select>
-          <option>1 Room</option>
-        </select></div><button class="btn btn-dark" data-book>Check Availability</button>
-    </section>
+
+    <div class="book-widget">
+      <form>
+        <div class="bf"><label>Check-in</label><input type="date" required></div>
+        <div class="bf"><label>Check-out</label><input type="date" required></div>
+        <div class="bf"><label>Guests</label><select><option>2 Guests</option><option>1 Guest</option><option>3 Guests</option><option>4+ Guests</option></select></div>
+        <div class="bf"><label>Rooms</label><select><option>1 Room</option><option>2 Rooms</option><option>3 Rooms</option></select></div>
+        <button type="submit" class="bsubmit">Check Availability</button>
+      </form>
+    </div>
+
     <section class="section" id="welcome">
       <div class="container split">
-        <div class="image-frame"><img src="https://images.unsplash.com/photo-1605537964076-3cb0ea2ff329?auto=format&fit=crop&w=1100&q=80" alt="Misty hills">
-          <div class="stamp">A pause, surrounded by green.</div>
+        <div class="image-frame tilt">
+          <div class="tilt-inner">
+            <img src="https://images.unsplash.com/photo-1605537964076-3cb0ea2ff329?auto=format&fit=crop&w=1100&q=80" alt="Misty hills">
+            <div class="stamp">A pause, surrounded by green.</div>
+          </div>
         </div>
         <div><span class="eyebrow">Welcome to Fortune Ooty</span>
           <h2 class="h2">A quieter way to experience the hills.</h2>
-          <p class="text-muted">Fortune Retreats sits at Belmont Terrace, Tiger Hills, atop a green hill, around 2 km from Ooty town. It is owned and managed by Fortune Retreats India Pvt. Ltd., established in 1995.</p><a class="btn btn-dark" href="about.html">Discover More</a>
+          <p class="text-muted">Fortune Retreats sits at Belmont Terrace, Tiger Hills, atop a green hill, around 2 km from Ooty town. It is owned and managed by Fortune Retreats India Pvt. Ltd., established in 1995.</p>
+          <a class="btn btn-dark" href="about.html">Discover More</a>
         </div>
       </div>
     </section>
+
     <section class="section alt">
       <div class="container">
         <div class="section-head"><span class="eyebrow">The Fortune way</span>
@@ -76,46 +95,62 @@
         </div>
       </div>
     </section>
-    <section class="section">
+
+    <section class="section" id="rooms">
       <div class="container">
         <div class="section-head"><span class="eyebrow">Stay</span>
           <h2 class="h2">Find your hillside retreat.</h2>
           <p class="text-muted">Room names, inventory and rates are pending confirmation.</p>
         </div>
-        <div class="cards">
-          <article class="card reveal"><img src="https://images.unsplash.com/photo-1601918774946-25832a4be0d6?auto=format&fit=crop&w=900&q=80" alt="Accommodation placeholder">
-            <div class="card-body"><span class="eyebrow">Accommodation</span>
+        <div class="room-results">
+          <p class="note">Showing our current room types. Exact live availability and confirmed nightly rates will be provided on enquiry until a booking engine is connected.</p>
+          <div class="premium-room">
+            <img src="https://images.unsplash.com/photo-1601918774946-25832a4be0d6?auto=format&fit=crop&w=900&q=80" alt="Accommodation placeholder">
+            <div class="pr-body">
+              <span class="eyebrow">Accommodation</span>
               <h3>[ROOM NAME TO BE UPDATED]</h3>
               <p class="text-muted">Verified room-level details, occupancy, beds and pricing are not published in the supplied source.</p>
-              <div class="tags">Secure Wi-Fi · Hot Water · Room Service</div>
-              <p><button class="btn btn-dark" data-book>View & Enquire</button></p>
+              <div class="pr-meta"><span>Guests: TBC</span><span>Bed type: TBC</span></div>
+              <div class="pr-tags"><span>Secure Wi-Fi</span><span>Hot Water</span><span>Room Service</span></div>
+              <div class="pr-price">Rate on enquiry</div>
+              <button class="pr-select" data-book>Select Room</button>
             </div>
-          </article>
-          <article class="card reveal"><img src="https://images.unsplash.com/photo-1601918774946-25832a4be0d6?auto=format&fit=crop&w=900&q=80" alt="Accommodation placeholder">
-            <div class="card-body"><span class="eyebrow">Accommodation</span>
+          </div>
+          <div class="premium-room">
+            <img src="https://images.unsplash.com/photo-1601918774946-25832a4be0d6?auto=format&fit=crop&w=900&q=80" alt="Accommodation placeholder">
+            <div class="pr-body">
+              <span class="eyebrow">Accommodation</span>
               <h3>[ROOM NAME TO BE UPDATED]</h3>
               <p class="text-muted">Verified room-level details, occupancy, beds and pricing are not published in the supplied source.</p>
-              <div class="tags">Secure Wi-Fi · Hot Water · Room Service</div>
-              <p><button class="btn btn-dark" data-book>View & Enquire</button></p>
+              <div class="pr-meta"><span>Guests: TBC</span><span>Bed type: TBC</span></div>
+              <div class="pr-tags"><span>Secure Wi-Fi</span><span>Hot Water</span><span>Room Service</span></div>
+              <div class="pr-price">Rate on enquiry</div>
+              <button class="pr-select" data-book>Select Room</button>
             </div>
-          </article>
-          <article class="card reveal"><img src="https://images.unsplash.com/photo-1601918774946-25832a4be0d6?auto=format&fit=crop&w=900&q=80" alt="Accommodation placeholder">
-            <div class="card-body"><span class="eyebrow">Accommodation</span>
+          </div>
+          <div class="premium-room">
+            <img src="https://images.unsplash.com/photo-1601918774946-25832a4be0d6?auto=format&fit=crop&w=900&q=80" alt="Accommodation placeholder">
+            <div class="pr-body">
+              <span class="eyebrow">Accommodation</span>
               <h3>[ROOM NAME TO BE UPDATED]</h3>
               <p class="text-muted">Verified room-level details, occupancy, beds and pricing are not published in the supplied source.</p>
-              <div class="tags">Secure Wi-Fi · Hot Water · Room Service</div>
-              <p><button class="btn btn-dark" data-book>View & Enquire</button></p>
+              <div class="pr-meta"><span>Guests: TBC</span><span>Bed type: TBC</span></div>
+              <div class="pr-tags"><span>Secure Wi-Fi</span><span>Hot Water</span><span>Room Service</span></div>
+              <div class="pr-price">Rate on enquiry</div>
+              <button class="pr-select" data-book>Select Room</button>
             </div>
-          </article>
+          </div>
         </div>
       </div>
     </section>
+
     <section class="wide-image">
       <div class="container"><span class="eyebrow" style="color:#e8ca90">Experience Ooty</span>
         <h2 class="h2">Slow mornings. Misty horizons.</h2>
         <p class="lead">From gardens and tea country to mountain views, Ooty invites unhurried exploration.</p><a class="btn btn-primary" href="contact.html">Plan Your Visit</a>
       </div>
     </section>
+
     <section class="section alt">
       <div class="container">
         <div class="section-head"><span class="eyebrow">Seasonal escapes</span>
@@ -144,6 +179,7 @@
         </div>
       </div>
     </section>
+
     <section class="section">
       <div class="container">
         <div class="section-head"><span class="eyebrow">A glimpse of Fortune</span>
@@ -166,6 +202,7 @@
         <p style="margin-top:28px"><a href="gallery.html" class="btn btn-dark">View Full Gallery</a></p>
       </div>
     </section>
+
     <section class="section alt">
       <div class="container">
         <div class="testimonial">
@@ -174,7 +211,8 @@
         </div>
       </div>
     </section>
-    <section class="location section">
+
+    <section class="location section" id="location">
       <div class="container split">
         <div><span class="eyebrow">Find us</span>
           <h2 class="h2">A hilltop address in Ooty.</h2>
@@ -184,13 +222,19 @@
         <div class="map"><span>Map placeholder</span></div>
       </div>
     </section>
+
     <section class="cta">
       <div class="container">
         <h2 class="h2">Your Ooty Escape Awaits</h2>
         <p class="lead" style="margin:0 auto 25px">Plan your stay at Fortune Ooty and experience the beauty of the Nilgiris.</p><button class="btn btn-primary" data-book>Book Your Stay</button>
       </div>
     </section>
-  </main><a class="whatsapp" href="https://wa.me/919360103305">◔</a>
+  </main>
+
+  <button class="float-book" data-book>Book Now</button>
+  <div class="mobile-book-bar"><button data-book>Check Availability</button></div>
+  <a class="whatsapp" href="https://wa.me/919360103305">◔</a>
+
   <footer class="footer">
     <div class="container footer-grid">
       <div><a class="brand">FORTUNE<span>OOTY · NILGIRIS</span></a>
@@ -210,6 +254,7 @@
     </div>
     <div class="container bottom">© Fortune Ooty. All Rights Reserved. | Prototype website concept.</div>
   </footer>
+
   <div class="modal" id="bookingModal">
     <div class="modal-box"><button class="modal-close" data-close="bookingModal">×</button><span class="eyebrow">Plan your stay</span>
       <h2>Enquire about availability</h2>
@@ -238,8 +283,10 @@
   <div class="modal lightbox" id="lightbox">
     <div class="modal-box"><button class="modal-close" data-close="lightbox">×</button><img id="lightboxImg" alt="Gallery image"></div>
   </div>
+
   <script src="js/script.js"></script>
   <script src="js/3d-enhancements.js"></script>
+  <script src="js/premium.js"></script>
 </body>
 
 </html>
