@@ -1,5 +1,5 @@
 import React, { useRef } from 'react';
-import { Canvas } from '@react-three/fiber';
+import { Canvas, useFrame } from '@react-three/fiber';
 import { PerspectiveCamera } from '@react-three/drei';
 import { useGSAP } from '@gsap/react';
 import gsap from 'gsap';
@@ -12,18 +12,36 @@ import { useScrollStore } from '../store/scrollStore.js';
 gsap.registerPlugin(ScrollTrigger);
 
 /**
+ * Lives INSIDE <Canvas>, so `camera`/refs are guaranteed to exist by the
+ * time this runs (useFrame only ever fires after the scene has mounted).
+ * Reads journeyProgress from the store and smoothly dollies the camera —
+ * this replaces a previous version that mutated a ref from an effect
+ * outside the Canvas, which could run before the ref was attached and
+ * crash the whole app with "Cannot read properties of null".
+ */
+function CameraRig() {
+  const journeyProgress = useScrollStore((s) => s.journeyProgress);
+  useFrame(({ camera }) => {
+    const targetZ = 5 - journeyProgress * 11; // 5 -> -6
+    const targetY = 0.6 - journeyProgress * 0.2; // 0.6 -> 0.4
+    camera.position.z += (targetZ - camera.position.z) * 0.06;
+    camera.position.y += (targetY - camera.position.y) * 0.06;
+  });
+  return null;
+}
+
+/**
  * Fixed, full-viewport <Canvas> sitting behind the scrolling HTML content.
- * Three ScrollTrigger instances (one per section wrapper in App.jsx) push
- * 0→1 progress values into the shared store; each 3D scene reads its own
- * value and animates independently, giving the "scenes shift as you scroll"
- * cinematic effect without re-mounting the Canvas.
+ * Four ScrollTrigger instances (one per section wrapper in UIOverlay.jsx,
+ * plus one spanning the whole page) push 0→1 progress values into the
+ * shared store; each 3D scene / the camera rig reads its own value inside
+ * useFrame and animates independently — all safely inside the R3F tree.
  */
 export default function Experience() {
-  const camGroup = useRef();
-
   const setHeroProgress = useScrollStore((s) => s.setHeroProgress);
   const setRoomsProgress = useScrollStore((s) => s.setRoomsProgress);
   const setAmenitiesProgress = useScrollStore((s) => s.setAmenitiesProgress);
+  const setJourneyProgress = useScrollStore((s) => s.setJourneyProgress);
 
   useGSAP(() => {
     ScrollTrigger.create({
@@ -50,25 +68,23 @@ export default function Experience() {
       onUpdate: (self) => setAmenitiesProgress(self.progress),
     });
 
-    // Subtle cinematic camera dolly through the whole journey
-    gsap.to(camGroup.current.position, {
-      z: -6,
-      y: 0.4,
-      scrollTrigger: {
-        trigger: '#scroll-root',
-        start: 'top top',
-        end: 'bottom bottom',
-        scrub: true,
-      },
+    ScrollTrigger.create({
+      trigger: '#scroll-root',
+      start: 'top top',
+      end: 'bottom bottom',
+      scrub: true,
+      onUpdate: (self) => setJourneyProgress(self.progress),
     });
+
+    // Recalculate section heights once everything (fonts, images) has laid out
+    ScrollTrigger.refresh();
   }, []);
 
   return (
     <div className="canvas-fixed">
       <Canvas shadows dpr={[1, 1.8]} gl={{ antialias: true }}>
-        <group ref={camGroup}>
-          <PerspectiveCamera makeDefault position={[0, 0.6, 5]} fov={42} />
-        </group>
+        <PerspectiveCamera makeDefault position={[0, 0.6, 5]} fov={42} />
+        <CameraRig />
         <HeroMistScene />
         <RoomsScene />
         <AmenitiesScene />
