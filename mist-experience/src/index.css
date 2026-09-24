@@ -1,0 +1,46 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html {
+  scroll-behavior: auto; /* Lenis handles smooth scroll instead */
+}
+
+body {
+  overflow-x: hidden;
+}
+
+.eyebrow {
+  font-size: .72rem;
+  letter-spacing: .32em;
+  text-transform: uppercase;
+  color: #e8ca90;
+}
+
+.editorial-h1 {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: clamp(2.6rem, 7vw, 6rem);
+  line-height: 1.05;
+  font-weight: 600;
+}
+
+.fade-line {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 1s ease, transform 1s ease;
+}
+.fade-line.in-view {
+  opacity: 1;
+  transform: none;
+}
+
+.canvas-fixed {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+}
+
+.scroll-content {
+  position: relative;
+  z-index: 10;
+}
