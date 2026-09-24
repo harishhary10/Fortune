@@ -1,0 +1,106 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Contact Fortune Ooty | Enquiries</title>
+  <meta name="description" content="Experience a relaxing stay in Ooty at Fortune Ooty, offering comfortable accommodation, hospitality and access to the Nilgiris.">
+  <meta property="og:title" content="Contact Fortune Ooty | Enquiries">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;800&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+  <header class="site-header">
+    <div class="container nav"><a class="brand" href="index.html">FORTUNE<span>OOTY · NILGIRIS</span></a><button class="menu" id="menuBtn">☰</button>
+      <nav class="links"><a href="index.html">Home</a><a href="about.html">About Us</a><a href="accommodation.html">Accommodation</a><a href="packages.html">Packages</a><a href="gallery.html">Gallery</a><a href="contact.html">Contact</a><button class="btn btn-primary" data-book>Book Now</button></nav>
+    </div>
+  </header>
+  <main>
+    <section class="page-hero">
+      <div class="container"><span class="eyebrow" style="color:#e8ca90">Contact</span>
+        <h1 class="h1">Let’s plan your stay</h1>
+      </div>
+    </section>
+    <section class="section">
+      <div class="container contact-grid">
+        <div><span class="eyebrow">Fortune Ooty</span>
+          <h2 class="h2">Get in touch.</h2>
+          <p><strong>Address</strong><br>Belmont Terrace, Tiger Hills, Ooty, Tamil Nadu</p>
+          <p><strong>Reception</strong><br>0423 2440907</p>
+          <p><strong>Office</strong><br>0423 2444615</p>
+          <p><strong>Email</strong><br>fortuneholidays.ooty@gmail.com</p>
+          <p><strong>WhatsApp</strong><br>+91 9360103305</p>
+        </div>
+        <div class="form">
+          <h2 class="h2">Tell us your plans.</h2>
+          <form>
+            <div class="field"><label>Full name</label><input required></div>
+            <div class="field"><label>Email</label><input type="email" required></div>
+            <div class="field"><label>Phone</label><input required></div>
+            <div class="form-grid">
+              <div class="field"><label>Check-in</label><input type="date"></div>
+              <div class="field"><label>Check-out</label><input type="date"></div>
+            </div>
+            <div class="field"><label>Guests</label><input type="number" min="1"></div>
+            <div class="field"><label>Message</label><textarea></textarea></div><button class="btn btn-primary">Send Enquiry</button>
+            <p class="form-note"></p>
+          </form>
+        </div>
+      </div>
+    </section>
+  </main><a class="whatsapp" href="https://wa.me/919360103305">◔</a>
+  <footer class="footer">
+    <div class="container footer-grid">
+      <div><a class="brand">FORTUNE<span>OOTY · NILGIRIS</span></a>
+        <p>A peaceful hill stay in Belmont Terrace, surrounded by Ooty’s green landscapes and warm hospitality.</p>
+      </div>
+      <div>
+        <h4>Explore</h4><a href="about.html">About Us</a><a href="accommodation.html">Accommodation</a><a href="packages.html">Packages</a><a href="gallery.html">Gallery</a>
+      </div>
+      <div>
+        <h4>Contact</h4>
+        <p>Belmont Terrace, Tiger Hills<br>Ooty, Tamil Nadu</p><a href="tel:04232440907">0423 2440907</a><a href="mailto:fortuneholidays.ooty@gmail.com">fortuneholidays.ooty@gmail.com</a>
+      </div>
+      <div>
+        <h4>Stay in touch</h4>
+        <form><input type="email" placeholder="Enter your email" required><button class="btn btn-primary" style="margin-top:12px">Subscribe</button><small class="form-note"></small></form>
+      </div>
+    </div>
+    <div class="container bottom">© Fortune Ooty. All Rights Reserved. | Prototype website concept.</div>
+  </footer>
+  <div class="modal" id="bookingModal">
+    <div class="modal-box"><button class="modal-close" data-close="bookingModal">×</button><span class="eyebrow">Plan your stay</span>
+      <h2>Enquire about availability</h2>
+      <form>
+        <div class="form-grid">
+          <div class="field"><label>Check-in</label><input type="date" required></div>
+          <div class="field"><label>Check-out</label><input type="date" required></div>
+          <div class="field"><label>Guests</label><select>
+              <option>2 Guests</option>
+              <option>1 Guest</option>
+              <option>3 Guests</option>
+            </select></div>
+          <div class="field"><label>Rooms</label><select>
+              <option>1 Room</option>
+              <option>2 Rooms</option>
+            </select></div>
+          <div class="field"><label>Name</label><input required></div>
+          <div class="field"><label>Phone</label><input required></div>
+          <div class="field"><label>Email</label><input type="email" required></div>
+          <div class="field"><label>Special request</label><input></div>
+        </div><button class="btn btn-primary" style="margin-top:18px">Check Availability</button>
+        <p class="form-note"></p>
+      </form>
+    </div>
+  </div>
+  <div class="modal lightbox" id="lightbox">
+    <div class="modal-box"><button class="modal-close" data-close="lightbox">×</button><img id="lightboxImg" alt="Gallery image"></div>
+  </div>
+  <script src="js/script.js"></script>
+</body>
+
+</html>
