@@ -1,42 +1,32 @@
-// server.js
-// Minimal Express server to host the static Fortune Ooty site on any Node.js host
-// (Render, Railway, Heroku, Vercel/Node runtime, AWS Elastic Beanstalk, etc.)
-
 const express = require('express');
 const path = require('path');
 const compression = require('compression');
 const helmet = require('helmet');
 
 const app = express();
-
-// Most hosts inject PORT via env var; fall back to 3000 for local dev
 const PORT = process.env.PORT || 3000;
 
 app.use(compression());
-app.use(
-  helmet({
-    contentSecurityPolicy: false, // disable if you add inline scripts/styles; tighten later if needed
-  })
-);
+app.use(helmet({ contentSecurityPolicy: false }));
 
-// Serve all static assets (html, css, js, images) from the "public" folder
-const PUBLIC_DIR = path.join(__dirname, 'public');
-app.use(express.static(PUBLIC_DIR));
+const ROOT_DIR = __dirname;
 
-// Explicit routes for clean URLs (optional but nice for SEO / no .html in address bar)
+app.use('/css', express.static(path.join(ROOT_DIR, 'css')));
+app.use('/js', express.static(path.join(ROOT_DIR, 'js')));
+app.use(express.static(ROOT_DIR, { extensions: ['html'] }));
+
 const pages = ['index', 'gallery', 'contact', 'packages', 'accommodation'];
 pages.forEach((page) => {
   const route = page === 'index' ? '/' : `/${page}`;
   app.get(route, (req, res) => {
-    res.sendFile(path.join(PUBLIC_DIR, `${page}.html`));
+    res.sendFile(path.join(ROOT_DIR, `${page}.html`));
   });
 });
 
-// 404 handler
 app.use((req, res) => {
-  res.status(404).sendFile(path.join(PUBLIC_DIR, 'index.html'));
+  res.status(404).sendFile(path.join(ROOT_DIR, 'index.html'));
 });
 
-app.listen(PORT, () => {
+app.listen(PORT, '0.0.0.0', () => {
   console.log(`Server running on port ${PORT}`);
 });
